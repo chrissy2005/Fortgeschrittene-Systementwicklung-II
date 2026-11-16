@@ -1,9 +1,17 @@
 /* MOS-WWI25B_Gruppe_5 */
 
 const gameList = document.querySelector("#game-list");
+const yearFilter = document.querySelector("#year-filter");
 
 function renderGames(gameEntries) {
     gameList.replaceChildren();
+
+    if(gameEntries.length === 0){
+        const message = document.createElement("p");
+        message.textContent = "Keine Spiele für diese Auswahl gefunden.";
+        gameList.append(message);
+        return;
+    }
 
     gameEntries.forEach((game) => {
         const card = document.createElement("article");
@@ -19,5 +27,18 @@ function renderGames(gameEntries) {
         gameList.append(card);
     });
 }
+
+function getGamesForSelectedYear(){
+    const selectedYear = yearFilter.value;
+    return games.filter((game) => {
+        return selectedYear === "" || String(game.year) === selectedYear;
+    });
+}
+
+function updateGameList(){
+    renderGames(getGamesForSelectedYear());
+}
+
+yearFilter.addEventListener("change", updateGameList);
 
 renderGames(games);
