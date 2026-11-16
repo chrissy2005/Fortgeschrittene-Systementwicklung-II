@@ -2,6 +2,7 @@
 
 const gameList = document.querySelector("#game-list");
 const yearFilter = document.querySelector("#year-filter");
+const searchInput = document.querySelector("#game-search");
 
 function renderGames(gameEntries) {
     gameList.replaceChildren();
@@ -28,17 +29,23 @@ function renderGames(gameEntries) {
     });
 }
 
-function getGamesForSelectedYear(){
+function getFilteredGames(){
+    const searchTerm = searchInput.value.trim().toLocaleLowerCase("de");
     const selectedYear = yearFilter.value;
     return games.filter((game) => {
-        return selectedYear === "" || String(game.year) === selectedYear;
+        const matchesTitle = game.title.toLocaleLowerCase("de").includes(searchTerm);
+
+        const matchesYear = selectedYear === "" || String(game.year) === selectedYear;
+
+        return matchesTitle && matchesYear;
     });
 }
 
 function updateGameList(){
-    renderGames(getGamesForSelectedYear());
+    renderGames(getFilteredGames());
 }
 
 yearFilter.addEventListener("change", updateGameList);
+searchInput.addEventListener("input", updateGameList);
 
-renderGames(games);
+updateGameList();
