@@ -1,10 +1,13 @@
 /* MOS-WWI25B_Gruppe_5 */
 
 const STORAGE_KEY = "retro-game-library-user-games";
+const FAVORITES_STORAGE_KEY = "retro-game-library-favorites";
 
 const gameList = document.querySelector("#game-list");
 const yearFilter = document.querySelector("#year-filter");
 const searchInput = document.querySelector("#game-search");
+const favoritesOnly = document.querySelector("#favorites-only");
+const resultStatus = document.querySelector("#result-status");
 
 const newGameForm = document.querySelector("#new-game-form");
 const newGameTitle = document.querySelector("#new-game-title");
@@ -12,6 +15,25 @@ const newGameYear = document.querySelector("#new-game-year");
 const newGameStatus = document.querySelector("#form-status");
 
 let userGames = loadUserGames();
+let favoriteIds = loadFavoriteIds();
+
+function loadFavoriteIds() {
+    try {
+        const savedIds = JSON.parse(
+            localStorage.getItem(FAVORITES_STORAGE_KEY) ?? "[]"
+        );
+
+        if (!Array.isArray(savedIds)) {
+            return [];
+        }
+
+        return savedIds.filter(Number.isInteger);
+    } catch {
+        resultStatus.textContent =
+            "Gespeicherte Favoriten konnten nicht geladen werden.";
+        return [];
+    }
+}
 
 function loadUserGames(){
     try {
@@ -48,6 +70,28 @@ function saveUserGames(){
     }
 }
 
+function toggleFavorite(gameId) {
+    if (favoriteIds.includes(gameId)) {
+        favoriteIds = favoriteIds.filter((id) => id !== gameId);
+    } else {
+        favoriteIds.push(gameId);
+    }
+
+    try {
+        localStorage.setItem(
+            FAVORITES_STORAGE_KEY,
+            JSON.stringify(favoriteIds)
+        );
+
+        resultStatus.textContent = "";
+    } catch {
+        resultStatus.textContent =
+            "Die Favoritenauswahl gilt für diese Sitzung, konnte aber nicht dauerhaft gespeichert werden.";
+    }
+
+    updateGameList();
+}
+
 function getAllGames(){
     return [...games, ...userGames];
 }
@@ -79,6 +123,7 @@ function handleNewGameSubmit(event){
     newGameForm.reset();
     searchInput.value = "";
     yearFilter.value = "";
+    favoritesOnly.checked = false;
 
     updateGameList();
 
@@ -107,7 +152,20 @@ function renderGames(gameEntries) {
         const year = document.createElement("p");
         year.textContent = `Erscheinungsjahr: ${game.year}`;
 
-        card.append(title, year);
+        const favoriteButton = document.createElement("button");
+        favoriteButton.type = "button";
+
+        const isFavorite = favoriteIds.includes(game.id);
+
+        favoriteButton.textContent = isFavorite
+            ? "Favorit entfernen"
+            : "Als Favorit speichern";
+
+        favoriteButton.addEventListener("click", () => {
+            toggleFavorite(game.id);
+        });
+
+        card.append(title, year, favoriteButton);
         gameList.append(card);
     });
 }
@@ -120,7 +178,10 @@ function getFilteredGames(){
 
         const matchesYear = selectedYear === "" || String(game.year) === selectedYear;
 
-        return matchesTitle && matchesYear;
+        const matchesFavorites =
+            !favoritesOnly.checked || favoriteIds.includes(game.id);
+
+        return matchesTitle && matchesYear &&matchesFavorites;
     });
 }
 
@@ -130,6 +191,7 @@ function updateGameList(){
 
 yearFilter.addEventListener("change", updateGameList);
 searchInput.addEventListener("input", updateGameList);
+favoritesOnly.addEventListener("change", updateGameList);
 newGameForm.addEventListener("submit", handleNewGameSubmit);
 
 updateGameList();
