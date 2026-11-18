@@ -20,7 +20,7 @@ main {
     margin: 0 auto;
 }
 
-/* Kopfbereich */
+
 
 header {
     padding: 40px 0 16px;
@@ -47,7 +47,7 @@ header p {
     background-color: #000080;
 }
 
-/* Hauptbereich: Seitenleiste links, Spiele rechts */
+
 
 main {
     display: grid;
@@ -63,7 +63,7 @@ main {
     gap: 24px;
 }
 
-/* Fenster im Stil von Windows 95 */
+
 
 .window {
     padding: 3px;
@@ -100,7 +100,7 @@ main {
     padding: 16px;
 }
 
-/* Formulare */
+
 
 .form-field {
     display: flex;
@@ -145,7 +145,7 @@ select:focus {
     outline-offset: 1px;
 }
 
-/* Buttons */
+
 
 button {
     padding: 6px 16px;
@@ -183,7 +183,7 @@ button[type="submit"] {
     color: #000080;
 }
 
-/* Spieleübersicht */
+
 
 .game-grid {
     display: grid;
@@ -241,7 +241,7 @@ button[type="submit"] {
     margin: auto 10px 0;
 }
 
-/* Fußbereich im Stil einer Taskleiste */
+
 
 footer {
     padding: 6px 5%;
@@ -259,7 +259,7 @@ footer p {
     border-color: #808080 #ffffff #ffffff #808080;
 }
 
-/* Responsive Anpassungen */
+
 
 @media (max-width: 1024px) {
     .game-grid {
