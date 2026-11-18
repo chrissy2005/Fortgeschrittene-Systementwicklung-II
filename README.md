@@ -25,4 +25,3 @@ Einfach die Datei `index.html` im Browser öffnen. Man muss nichts installieren.
 - Eigene Spiele und Favoriten bleiben auch nach dem Neuladen gespeichert (localStorage)
 - Hinweis, wenn zur Suche oder zum Filter kein Spiel passt
 - Layout passt sich an Desktop und Handy an
-<!-- MOS-WWI25B_Gruppe_5 -->
