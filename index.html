@@ -18,51 +18,74 @@
         </header>
 
         <main>
-            <label for="game-search">Spiel suchen</label>
-            <input
-                type="search"
-                id="game-search"
-                name="search"
-                placeholder="Spieltitel eingeben"
-            >
+            <aside class="sidebar">
+                <section class="window">
+                    <h2 class="window-title">Spiele filtern</h2>
 
-            <label for="year-filter">Erscheinungsjahr</label>
-            <select id="year-filter" name="year">
-                <option value="">Alle Jahre</option>
-                <option value="1990">1990</option>
-                <option value="1991">1991</option>
-                <option value="1992">1992</option>
-                <option value="1993">1993</option>
-                <option value="1994">1994</option>
-                <option value="1995">1995</option>
-                <option value="1996">1996</option>
-                <option value="1997">1997</option>
-                <option value="1998">1998</option>
-                <option value="1999">1999</option>
-                <option value="2000">2000</option>
-            </select>
+                    <div class="window-content">
+                        <div class="form-field">
+                            <label for="game-search">Spiel suchen</label>
+                            <input
+                                type="search"
+                                id="game-search"
+                                name="search"
+                                placeholder="Spieltitel eingeben"
+                            >
+                        </div>
 
-            <input type="checkbox" id="favorites-only" name="favorites">
-            <label for="favorites-only">Nur Favoriten anzeigen</label>
+                        <div class="form-field">
+                            <label for="year-filter">Erscheinungsjahr</label>
+                            <select id="year-filter" name="year">
+                                <option value="">Alle Jahre</option>
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                                <option value="1998">1998</option>
+                                <option value="1999">1999</option>
+                                <option value="2000">2000</option>
+                            </select>
+                        </div>
 
-            <form id="new-game-form">
-                <h2>Neues Spiel hinzufügen</h2>
-                <label for="new-game-title">Spieltitel</label>
-                <input type="text" id="new-game-title" name="title" maxlength="200" required>
+                        <div class="checkbox-field">
+                            <input type="checkbox" id="favorites-only" name="favorites">
+                            <label for="favorites-only">Nur Favoriten anzeigen</label>
+                        </div>
+                    </div>
+                </section>
 
-                <label for="new-game-year">Erscheinungsjahr</label>
-                <input type="number" id="new-game-year" name="year" min="1990" max="2000" step="1" required>
+                <section class="window">
+                    <h2 class="window-title">Neues Spiel hinzufügen</h2>
 
-                <button type="submit">Spiel hinzufügen</button>
-                <p id="form-status" role="status" aria-live="polite"></p>
-            </form>
+                    <form id="new-game-form" class="window-content">
+                        <div class="form-field">
+                            <label for="new-game-title">Spieltitel</label>
+                            <input type="text" id="new-game-title" name="title" maxlength="200" required>
+                        </div>
 
-            <section>
-                <h2>Spieleübersicht</h2>
-                <div id="game-list" class="game-grid"></div>
-                <p id="result-status" role="status" aria-live="polite"></p>     
+                        <div class="form-field">
+                            <label for="new-game-year">Erscheinungsjahr</label>
+                            <input type="number" id="new-game-year" name="year" min="1990" max="2000" step="1" required>
+                        </div>
+
+                        <button type="submit">Spiel hinzufügen</button>
+                        <p id="form-status" class="status-message" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </aside>
+
+            <section class="window">
+                <h2 class="window-title">Spieleübersicht</h2>
+
+                <div class="window-content">
+                    <div id="game-list" class="game-grid"></div>
+                    <p id="result-status" class="status-message" role="status" aria-live="polite"></p>
+                </div>
             </section>
-
         </main>
 
         <footer>
