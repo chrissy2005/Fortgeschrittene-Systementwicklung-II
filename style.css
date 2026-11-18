@@ -1,10 +1,8 @@
 /* MOS-WWI25B_Gruppe_5 */
 
-
 * {
     box-sizing: border-box;
 }
-
 
 body {
     margin: 0;
@@ -18,7 +16,6 @@ body {
     min-height: 100vh;
 }
 
-
 header,
 main {
     width: 90%;
@@ -26,11 +23,9 @@ main {
     margin: 0 auto;
 }
 
-
 header {
     padding: 40px 0 16px;
 }
-
 
 header h1 {
     margin: 0;
@@ -43,7 +38,6 @@ header h1 {
     text-shadow: 3px 3px 0 #000000;
 }
 
-
 header p {
     display: inline-block;
     margin: 12px 0 0;
@@ -54,7 +48,6 @@ header p {
     background-color: #000080;
 }
 
-
 main {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -64,13 +57,11 @@ main {
     padding: 16px 0 40px;
 }
 
-
 .sidebar {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
-
 
 .window {
     padding: 3px;
@@ -79,7 +70,6 @@ main {
     border-color: #ffffff #404040 #404040 #ffffff;
     box-shadow: 4px 4px 0 #004040;
 }
-
 
 .window-title {
     display: flex;
@@ -92,7 +82,6 @@ main {
     background-color: #000080;
 }
 
-
 .window-title::before {
     content: "";
     width: 12px;
@@ -102,7 +91,6 @@ main {
     border-color: #ffffff #404040 #404040 #ffffff;
 }
 
-
 .window-content {
     display: flex;
     flex-direction: column;
@@ -110,13 +98,11 @@ main {
     padding: 16px;
 }
 
-
 .form-field {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
-
 
 .checkbox-field {
     display: flex;
@@ -124,11 +110,9 @@ main {
     gap: 8px;
 }
 
-
 label {
     font-weight: bold;
 }
-
 
 input,
 select {
@@ -141,11 +125,9 @@ select {
     border-color: #808080 #ffffff #ffffff #808080;
 }
 
-
 input::placeholder {
     color: #707070;
 }
-
 
 input[type="checkbox"] {
     width: 18px;
@@ -153,13 +135,11 @@ input[type="checkbox"] {
     margin: 0;
 }
 
-
 input:focus,
 select:focus {
     outline: 2px solid #000080;
     outline-offset: 1px;
 }
-
 
 button {
     padding: 6px 16px;
@@ -172,22 +152,18 @@ button {
     cursor: pointer;
 }
 
-
 button:hover {
     background-color: #d4d0c8;
 }
-
 
 button:focus {
     outline: 1px dotted #000000;
     outline-offset: -5px;
 }
 
-
 button:active {
     border-color: #404040 #ffffff #ffffff #404040;
 }
-
 
 button[type="submit"] {
     align-self: flex-start;
@@ -195,20 +171,17 @@ button[type="submit"] {
     font-weight: bold;
 }
 
-
 .status-message {
     margin: 0;
     font-weight: bold;
     color: #000080;
 }
 
-
 .game-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
-
 
 .game-grid > p {
     grid-column: 1 / -1;
@@ -221,7 +194,6 @@ button[type="submit"] {
     border-color: #808080 #ffffff #ffffff #808080;
 }
 
-
 .game-card {
     display: flex;
     flex-direction: column;
@@ -232,12 +204,10 @@ button[type="submit"] {
     border-color: #ffffff #404040 #404040 #ffffff;
 }
 
-
 .game-card:hover {
     transform: translate(-2px, -2px);
     box-shadow: 4px 4px 0 #000000;
 }
-
 
 .game-card h3 {
     margin: 0;
@@ -247,7 +217,6 @@ button[type="submit"] {
     background-color: #000080;
     overflow-wrap: break-word;
 }
-
 
 .game-card p {
     margin: 0 10px;
@@ -259,19 +228,17 @@ button[type="submit"] {
     border-color: #808080 #ffffff #ffffff #808080;
 }
 
-
 .game-card button {
     align-self: flex-start;
     margin: auto 10px 0;
 }
 
-
 footer {
+    margin-top: auto;
     padding: 6px 5%;
     background-color: #c0c0c0;
     border-top: 2px solid #ffffff;
 }
-
 
 footer p {
     display: inline-block;
@@ -283,13 +250,11 @@ footer p {
     border-color: #808080 #ffffff #ffffff #808080;
 }
 
-
 @media (max-width: 1024px) {
     .game-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media (max-width: 900px) {
     main {
@@ -297,21 +262,17 @@ footer p {
     }
 }
 
-
 @media (max-width: 600px) {
     header {
         padding-top: 24px;
     }
-
 
     header h1 {
         font-size: 1.8rem;
         letter-spacing: 1px;
     }
 
-
     .game-grid {
         grid-template-columns: 1fr;
     }
 }
-
